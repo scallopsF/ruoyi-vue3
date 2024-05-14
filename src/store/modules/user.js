@@ -1,6 +1,7 @@
 import { login, logout, getInfo } from '@/api/login'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import defAva from '@/assets/images/profile.jpg'
+import { encrypt } from '@/utils/aesEncrypt'
 
 const useUserStore = defineStore(
   'user',
@@ -17,7 +18,7 @@ const useUserStore = defineStore(
       // 登录
       login(userInfo) {
         const username = userInfo.username.trim()
-        const password = userInfo.password
+        const password = encrypt(userInfo.password);
         const code = userInfo.code
         const uuid = userInfo.uuid
         return new Promise((resolve, reject) => {

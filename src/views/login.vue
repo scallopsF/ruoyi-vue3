@@ -96,6 +96,12 @@ const captchaEnabled = ref(true);
 // 注册开关
 const register = ref(false);
 const redirect = ref(undefined);
+const num = ref(3);
+
+
+onMounted(() => {
+  console.log(num.value **= 3);
+}),
 
 watch(route, (newRoute) => {
     redirect.value = newRoute.query && newRoute.query.redirect;
